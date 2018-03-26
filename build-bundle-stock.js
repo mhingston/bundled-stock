@@ -57,20 +57,13 @@ const processFile = (file) =>
 
             SKUs.forEach((sku) =>
             {
-                let qty;
                 const qtyMatch = sku.match(patternQTY);
-
-                if(qtyMatch)
-                {
-                    sku  = qtyMatch[0];
-                    qty = isNaN(parseInt(qtyMatch[1])) ? 1 : parseInt(qtyMatch[1]);
-                }
-
+                
                 bundle.push(
                     {
                         row: row[0],
-                        sku,
-                        qty
+                        sku: qtyMatch[0],
+                        qty: isNaN(parseInt(qtyMatch[1])) ? 1 : parseInt(qtyMatch[1])
                     });
             });
 
